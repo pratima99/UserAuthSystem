@@ -15,7 +15,7 @@
 			<div class="card pt-6" style="width: 30rem;">
 				<div class="card-body">
 					<h3 class="card-title py-4">Create an account !</h3>
-					<form action="SignUp">
+					<form action="signup" method="post">
 						<div class="mb-3">
 							<label for="username" class="form-label">User Name</label> <input
 								type="text" class="form-control" id="username" name="username">
@@ -43,7 +43,7 @@
 						</div>
 						
 						<button type="submit" class="btn btn-primary">Sign Up</button>
-						<p>Already have an account ? <a href="index.jsp">Login</a></p>
+						<p>Already have an account ? <a href="login-form">Login</a></p>
 					</form>
 				</div>
 			</div>

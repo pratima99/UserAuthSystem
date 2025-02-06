@@ -15,7 +15,7 @@
 			<div class="card pt-6" style="width: 30rem;">
 				<div class="card-body">
 					<h3 class="card-title py-4">Login to your account !</h3>
-					<form action="Login" method="post">
+					<form action="login" method="post">
 						<div class="mb-3">
 							<label for="email" class="form-label">Email</label> <input
 								type="email" class="form-control" id="email" name="email">
@@ -27,7 +27,7 @@
 								name="password">
 						</div>
 						<button type="submit" class="btn btn-primary">Login</button>
-						<p>Don't have an account ? <a href="SignUp">Sign Up</a></p>
+						<p>Don't have an account ? <a href="signup-form">Sign Up</a></p>
 					</form>
 				</div>
 			</div>
