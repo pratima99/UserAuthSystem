@@ -88,8 +88,21 @@ public class AuthController extends HttpServlet {
 	}
 	
 	protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-		rd.forward(request, response);
+		
+		String username = request.getParameter("username");
+	    String password = request.getParameter("password");
+
+	    User user = dao.validateUser(username, password);
+	    
+	    if (user != null) {
+	        // Store user in session
+	        request.getSession().setAttribute("user", user);
+	        response.sendRedirect("success.jsp"); // Redirect to success page
+	    } else {
+	        request.setAttribute("error", "Invalid username or password.");
+	        RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+	        rd.forward(request, response);
+	    }
 	}
 
 }

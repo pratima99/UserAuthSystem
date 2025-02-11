@@ -3,8 +3,8 @@ package com.cestar.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import com.cestar.model.User;
 
 public class UserDao {
@@ -58,6 +58,41 @@ public class UserDao {
 			System.err.println("Error adding user: " + e.getMessage());
 		}
 		return status;
+	}
+	
+	public User validateUser(String username, String password) {
+
+		User user = null;
+
+		Connection con = dbConnection();
+		String sql = "select * from employee where username=? AND password=?";
+
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+
+			// Set the values for ? marks
+
+			pstmt.setString(1, username);
+			pstmt.setString(2, password);
+
+			ResultSet rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				user = new User(rs.getString("username"), rs.getString("password"), rs.getString("contact"),
+						rs.getString("city"), rs.getString("email"));
+
+			} else {
+
+				System.out.println("Query Failed");
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return user;
+
 	}
 
 }
