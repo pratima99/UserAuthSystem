@@ -65,7 +65,7 @@ public class UserDao {
 		User user = null;
 
 		Connection con = dbConnection();
-		String sql = "select * from employee where username=? AND password=?";
+		String sql = "select * from users where username=? AND password=?";
 
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
@@ -77,14 +77,9 @@ public class UserDao {
 
 			ResultSet rs = pstmt.executeQuery();
 
-			if (rs.next()) {
+			if (rs.next())
 				user = new User(rs.getString("username"), rs.getString("password"), rs.getString("contact"),
 						rs.getString("city"), rs.getString("email"));
-
-			} else {
-
-				System.out.println("Query Failed");
-			}
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

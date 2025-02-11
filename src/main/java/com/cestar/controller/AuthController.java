@@ -50,6 +50,10 @@ public class AuthController extends HttpServlet {
 			login(request, response);
 			break;
 		}
+		case "/logout": {
+			logout(request, response);
+			break;
+		}
 		}
 	}
 
@@ -77,9 +81,11 @@ public class AuthController extends HttpServlet {
 		int status = dao.insertUser(user);
 		
 		if(status > 0)
-			login(request, response);
+			request.setAttribute("success", "You have registered successfully.");
+		signupForm(request,response);
 		
-		System.out.print("User register error!");
+		request.setAttribute("error", "User registration failed. Please try again.");
+		signupForm(request,response);
 	}
 	
 	protected void loginForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -100,9 +106,13 @@ public class AuthController extends HttpServlet {
 	        response.sendRedirect("success.jsp"); // Redirect to success page
 	    } else {
 	        request.setAttribute("error", "Invalid username or password.");
-	        RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-	        rd.forward(request, response);
+	        loginForm(request,response);
 	    }
 	}
+	
+	protected void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			request.getSession().invalidate();
+			response.sendRedirect("login-form");
+		}
 
 }
