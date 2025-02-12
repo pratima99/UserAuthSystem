@@ -71,7 +71,6 @@ public class UserDao {
 			PreparedStatement pstmt = con.prepareStatement(sql);
 
 			// Set the values for ? marks
-
 			pstmt.setString(1, username);
 			pstmt.setString(2, password);
 

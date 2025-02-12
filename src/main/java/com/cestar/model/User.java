@@ -3,7 +3,7 @@ package com.cestar.model;
 public class User {
 	
 	private int id;
-	private String userName;
+	private String username;
 	private String password;
 	private String contact;
 	private String city;
@@ -16,10 +16,10 @@ public class User {
 		this.id = id;
 	}
 	public String getUserName() {
-		return userName;
+		return username;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUserName(String username) {
+		this.username = username;
 	}
 	public String getPassword() {
 		return password;
@@ -51,9 +51,9 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public User(String userName, String password, String contact, String city, String email) {
+	public User(String username, String password, String contact, String city, String email) {
 		super();
-		this.userName = userName;
+		this.username = username;
 		this.password = password;
 		this.contact = contact;
 		this.city = city;
@@ -62,7 +62,7 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", userName=" + userName + ", password=" + password + ", contact=" + contact + ", city=" + city + ", email=" + email
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", contact=" + contact + ", city=" + city + ", email=" + email
 				+ "]\n";
 	}
 	
